@@ -28,12 +28,12 @@
         "args": "none"
       }
     ],
-    "@typescript-eslint/no-explicit-any": [
-      "error",
-      {
-        "ignoreRestArgs": true
-      }
-    ],
+    // "@typescript-eslint/no-explicit-any": [
+    //   "error",
+    //   {
+    //     "ignoreRestArgs": true
+    //   }
+    // ],
     "max-len": [
       "warn",
       {
@@ -73,6 +73,7 @@
     "react/jsx-wrap-multilines": "off",
     "react/destructuring-assignment": "off",
     "@typescript-eslint/return-await":"off",
+    "@typescript-eslint/no-explicit-any":"off",
     "no-underscore-dangle":"off",
     
     "@typescript-eslint/comma-dangle": ["error", {
