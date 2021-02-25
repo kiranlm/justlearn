@@ -1,12 +1,12 @@
 import React from 'react';
-import App from '../Components/App';
+import Main from '../Components/Main';
 
 const protectedRoutes = [
   {
     name: 'home',
     exact: true,
     path: '/home',
-    main: (props: any) => <App {...props} />,
+    main: (props: any) => <Main {...props} />,
     public: false,
   },
 ];

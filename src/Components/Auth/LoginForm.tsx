@@ -1,30 +1,20 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import firebase from 'firebase/app';
+import { UserOutlined, LockOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
-import { AuthContext } from '../../App';
 
 import './styles.css';
+import { auth } from '.';
 
 const LoginForm = ({ history }: any) => {
-  const Auth = useContext(AuthContext);
-
-  const onFinish = ({ username, password }: any) => {
-    firebase
-      .auth()
-      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-      .then(() => {
-        firebase
-          .auth()
-          .signInWithEmailAndPassword(username, password)
-          .then(res => {
-            if (res.user) Auth.setLoggedIn(true);
-            history.push('/home');
-          })
-          .catch(e => {});
-      });
-    console.log('Received values of form: ', username, password);
+  const onFinish = async ({ email, password }: any) => {
+    try {
+      const { user } = await auth.signInWithEmailAndPassword(email, password);
+      console.log(user);
+      history.push('/home');
+    } catch (error) {
+      console.log('Error', error);
+    }
   };
 
   return (
@@ -37,15 +27,15 @@ const LoginForm = ({ history }: any) => {
       onFinish={onFinish}
     >
       <Form.Item
-        name='username'
+        name='email'
         rules={[
           {
             required: true,
-            message: 'Please input your Username!',
+            message: 'Please input your Email!',
           },
         ]}
       >
-        <Input prefix={<UserOutlined className='site-form-item-icon' />} placeholder='Username' />
+        <Input prefix={<UserOutlined className='site-form-item-icon' />} placeholder='Email' />
       </Form.Item>
       <Form.Item
         name='password'
@@ -56,7 +46,12 @@ const LoginForm = ({ history }: any) => {
           },
         ]}
       >
-        <Input prefix={<LockOutlined className='site-form-item-icon' />} type='password' placeholder='Password' />
+        <Input.Password
+          prefix={<LockOutlined className='site-form-item-icon' />}
+          type='password'
+          placeholder='Password'
+          iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+        />
       </Form.Item>
       <Form.Item>
         <Form.Item name='remember' valuePropName='checked' noStyle>
@@ -72,7 +67,7 @@ const LoginForm = ({ history }: any) => {
         <Button type='primary' htmlType='submit' className='login-form-button'>
           Log in
         </Button>
-        Or <a href=''>register now!</a>
+        Or <a href='/register'>register now!</a>
       </Form.Item>
     </Form>
   );

@@ -1,29 +1,16 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState } from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
-import firebase from 'firebase';
 import routes from './Routes';
 import protectedRoutes from './Routes/ProtectedRoutes';
-import firebaseConfig from './Config/firebase.config';
 import ProtectedRouteHoc from './Routes/ProtectedRouteHoc';
 import './styles/index.css';
-
-firebase.initializeApp(firebaseConfig);
-
-export const AuthContext = React.createContext({});
+import UserProvider from './Providers/UserProvider';
 
 const App: FC = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
 
-  function readSession() {
-    const user = window.sessionStorage.getItem(`firebase:authUser:${firebaseConfig.apiKey}:[DEFAULT]`);
-    if (user) setLoggedIn(true);
-  }
-  useEffect(() => {
-    readSession();
-  }, []);
-
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn }}>
+    <UserProvider>
       <div>
         <Router>
           <div>
@@ -50,7 +37,7 @@ const App: FC = () => {
           </div>
         </Router>
       </div>
-    </AuthContext.Provider>
+    </UserProvider>
   );
 };
 
