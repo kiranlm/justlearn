@@ -1,0 +1,61 @@
+.public-layout {
+  background-color: rgb(254 176 0 / 62%);
+  background-position: top;
+  background-size: cover;
+  height: 100vh;
+}
+.public-layout::after {
+  content: '';
+  background-image: url('https://demos.freehtml5.co/justice/images/img_bg_4.jpg');
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+.logo {
+  height: 60px;
+}
+.top-header {
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-menu {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+}
+.home-carousel {
+  width: 60vw;
+}
+.public-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  background: none;
+  align-items: center;
+}
+.footer {
+  text-align: center;
+  background: none;
+}
+
+@media screen and (max-width: 600px) {
+  .home-carousel {
+    width: 100vw;
+  }
+  .public-content-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 800px) {
+  .home-carousel {
+    width: 50vw;
+  }
+}

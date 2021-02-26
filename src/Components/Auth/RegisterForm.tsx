@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Form, Input, Button, Row, Col, Divider } from 'antd';
+import { Form, Input, Button, Row, Col } from 'antd';
 import { UserOutlined, LockOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
@@ -19,72 +19,69 @@ const RegisterForm = ({ history }: RouteComponentProps) => {
   };
 
   return (
-    <>
-      <Divider orientation='left'>Register</Divider>
-      <Row justify='space-around' align='middle'>
-        <Col span={5}>
-          <Form
-            name='normal_login'
-            className='login-form'
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={onFinish}
+    <Row justify='space-around' align='middle'>
+      <Col span={5}>
+        <Form
+          name='normal_login'
+          className='login-form'
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
+        >
+          <Form.Item
+            name='email'
+            rules={[
+              {
+                required: true,
+                message: 'Please input your Email!',
+              },
+            ]}
           >
-            <Form.Item
-              name='email'
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your Email!',
-                },
-              ]}
-            >
-              <Input prefix={<UserOutlined className='site-form-item-icon' />} placeholder='Email' />
-            </Form.Item>
-            <Form.Item
-              name='password'
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your Password!',
-                },
-              ]}
-            >
-              <Input.Password
-                prefix={<LockOutlined className='site-form-item-icon' />}
-                type='password'
-                placeholder='Password'
-                iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-              />
-            </Form.Item>
-            <Form.Item
-              name='confirmPassword'
-              rules={[
-                {
-                  required: true,
-                  message: 'Please confirm your Password!',
-                },
-              ]}
-            >
-              <Input.Password
-                prefix={<LockOutlined className='site-form-item-icon' />}
-                type='confirmPassword'
-                placeholder='Confirm Password'
-                iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-              />
-            </Form.Item>
+            <Input prefix={<UserOutlined className='site-form-item-icon' />} placeholder='Email' />
+          </Form.Item>
+          <Form.Item
+            name='password'
+            rules={[
+              {
+                required: true,
+                message: 'Please input your Password!',
+              },
+            ]}
+          >
+            <Input.Password
+              prefix={<LockOutlined className='site-form-item-icon' />}
+              type='password'
+              placeholder='Password'
+              iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+            />
+          </Form.Item>
+          <Form.Item
+            name='confirmPassword'
+            rules={[
+              {
+                required: true,
+                message: 'Please confirm your Password!',
+              },
+            ]}
+          >
+            <Input.Password
+              prefix={<LockOutlined className='site-form-item-icon' />}
+              type='confirmPassword'
+              placeholder='Confirm Password'
+              iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+            />
+          </Form.Item>
 
-            <Form.Item>
-              <Button type='primary' htmlType='submit' className='login-form-button'>
-                Register
-              </Button>
-              Or <a href=''>login here!</a>
-            </Form.Item>
-          </Form>
-        </Col>
-      </Row>
-    </>
+          <Form.Item>
+            <Button type='primary' htmlType='submit' className='login-form-button'>
+              Register
+            </Button>
+            Or <a href=''>login here!</a>
+          </Form.Item>
+        </Form>
+      </Col>
+    </Row>
   );
 };
 
