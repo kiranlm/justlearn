@@ -9,7 +9,6 @@ import ProtectedRouteHoc from '../Routes/ProtectedRouteHoc';
 const Main: FC = () => {
   const user = useContext(UserContext);
   const { userState } = user;
-  console.log(user);
   const Layout = userState ? ContentLayout : PublicLayout;
   return (
     <div>

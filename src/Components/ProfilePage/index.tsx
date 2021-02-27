@@ -72,7 +72,7 @@ const ProfilePage = () => {
           <div
             style={{
               background: `url(${
-                userState.photoURL || 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
+                userState.photoURL || 'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
               })  no-repeat center center`,
               backgroundSize: 'cover',
               height: '100px',

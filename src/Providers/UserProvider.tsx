@@ -22,7 +22,6 @@ const UserProvider: FC = (props: any) => {
   useEffect(
     () =>
       auth.onAuthStateChanged(userAuth => {
-        console.log(userAuth);
         setUserState(userAuth);
         setAuthPending(false);
       }),
