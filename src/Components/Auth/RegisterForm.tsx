@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Form, Input, Button, Row, Col } from 'antd';
 import { UserOutlined, LockOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 
 import './styles.css';
 import { UserContext } from '../../Providers/UserProvider';
@@ -20,7 +20,7 @@ const RegisterForm = ({ history }: RouteComponentProps) => {
 
   return (
     <Row justify='space-around' align='middle'>
-      <Col span={5}>
+      <Col span={12}>
         <Form
           name='normal_login'
           className='login-form'
@@ -77,7 +77,7 @@ const RegisterForm = ({ history }: RouteComponentProps) => {
             <Button type='primary' htmlType='submit' className='login-form-button'>
               Register
             </Button>
-            Or <a href=''>login here!</a>
+            Or <Link to='/'>login here!</Link>
           </Form.Item>
         </Form>
       </Col>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Form, Input, Button, Checkbox, Row, Col } from 'antd';
 import { UserOutlined, LockOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 
 import './styles.css';
 import { UserContext } from '../../Providers/UserProvider';
@@ -71,7 +71,7 @@ const LoginForm = ({ history }: RouteComponentProps) => {
             <Button type='primary' htmlType='submit' className='login-form-button'>
               Log in
             </Button>
-            Or <a href='/register'>register now!</a>
+            Or <Link to='/register'>register now!</Link>
           </Form.Item>
         </Form>
       </Col>

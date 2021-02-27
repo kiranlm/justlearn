@@ -5,7 +5,7 @@ import ProfilePage from '../Components/ProfilePage';
 
 const publicRoutes = [
   { name: 'Login', path: '/', exact: true, main: () => <LoginForm /> },
-  { name: 'Register', path: '/register', exact: true, main: () => <RegisterForm /> },
+  { name: 'Register', path: '/register', main: () => <RegisterForm /> },
 ];
 
 const protectedRoutes = [
