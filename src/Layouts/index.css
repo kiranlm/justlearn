@@ -46,6 +46,13 @@
 .page-header {
   display: flex;
 }
+.volume-muted {
+  color: #ccc;
+  opacity: 0.8;
+}
+.volume-unmuted {
+  color: green;
+}
 
 @media screen and (max-width: 600px) {
   .home-carousel {

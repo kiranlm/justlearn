@@ -6,15 +6,15 @@ import { CourseList, Course } from '../Components/Course';
 import ProfilePage from '../Components/ProfilePage';
 
 const publicRoutes = [
-  { name: 'Login', path: '/', exact: true, main: () => <LoginForm /> },
+  { name: 'Login', path: '/login', exact: true, main: () => <LoginForm /> },
   { name: 'Register', path: '/register', main: () => <RegisterForm /> },
 ];
 
 const protectedRoutes = [
   {
-    name: 'home',
+    name: 'profile',
     exact: true,
-    path: '/home',
+    path: '/profile',
     main: (props: any) => <ProfilePage {...props} />,
     public: false,
   },
