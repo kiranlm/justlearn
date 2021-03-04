@@ -5,20 +5,20 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 const CourseList: FC = ({ history }: any) => {
   const columns = [
     {
-      title: 'Name',
+      title: 'Course Name',
       dataIndex: 'name',
       key: 'name',
-      render: (text: any) => <a>{text}</a>,
+      render: (text: any) => <a>{text}</a>
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
+      title: 'Code',
+      dataIndex: 'code',
+      key: 'code'
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
+      title: 'Category',
+      dataIndex: 'category',
+      key: 'category'
     },
     {
       title: 'Tags',
@@ -27,9 +27,9 @@ const CourseList: FC = ({ history }: any) => {
       render: (tags: any) => (
         <>
           {tags.map((tag: any) => {
-            let color = tag.length > 5 ? 'geekblue' : 'green';
-            if (tag === 'loser') {
-              color = 'volcano';
+            let color = tag.length > 4 ? 'geekblue' : 'green';
+            if (tag.length > 7) {
+              color = 'pink';
             }
             return (
               <Tag color={color} key={tag}>
@@ -38,42 +38,42 @@ const CourseList: FC = ({ history }: any) => {
             );
           })}
         </>
-      ),
+      )
     },
     {
       title: 'Action',
       key: 'action',
       render: (text: any, record: any) => (
         <Space size='middle'>
-          <a>Invite {record.name}</a>
+          <a>Edit - {record.code}</a>
           <a>Delete</a>
         </Space>
-      ),
-    },
+      )
+    }
   ];
 
   const data = [
     {
       key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-      tags: ['nice', 'developer'],
+      name: 'Introduction to Python',
+      code: 32,
+      category: 'Programming backend',
+      tags: ['python', 'pandas']
     },
     {
       key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-      tags: ['loser'],
+      name: 'Java with Springboot',
+      code: 42,
+      category: 'Programming backend',
+      tags: ['java', 'spring']
     },
     {
       key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-      tags: ['cool', 'teacher'],
-    },
+      name: "You don't know javascript",
+      code: 55,
+      category: 'Front end',
+      tags: ['javascript', 'ES6']
+    }
   ];
 
   return (
@@ -82,7 +82,7 @@ const CourseList: FC = ({ history }: any) => {
         onClick: event => {
           //   console.log(record);
           history.push(`/course/${record.key}`);
-        },
+        }
       })}
       columns={columns}
       dataSource={data}

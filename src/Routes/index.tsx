@@ -7,7 +7,7 @@ import ProfilePage from '../Components/ProfilePage';
 
 const publicRoutes = [
   { name: 'Login', path: '/login', exact: true, main: () => <LoginForm /> },
-  { name: 'Register', path: '/register', main: () => <RegisterForm /> },
+  { name: 'Register', path: '/register', main: () => <RegisterForm /> }
 ];
 
 const protectedRoutes = [
@@ -16,29 +16,29 @@ const protectedRoutes = [
     exact: true,
     path: '/profile',
     main: (props: any) => <ProfilePage {...props} />,
-    public: false,
+    public: false
   },
   {
     name: 'courses',
     exact: true,
     path: '/courses',
     main: (props: any) => <CourseList {...props} />,
-    public: false,
+    public: false
   },
   {
     name: 'course',
     exact: true,
     path: '/course/:id',
     main: (props: any) => <Course {...props} />,
-    public: false,
+    public: false
   },
   {
     name: 'classroom',
     exact: true,
-    path: '/classroom/:session',
+    path: '/classroom/:session/:type?',
     main: (props: any) => <ClassRoom {...props} />,
-    public: false,
-  },
+    public: false
+  }
 ];
 
 export { publicRoutes, protectedRoutes };
