@@ -14,13 +14,13 @@ const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 const SideMenu: FC = () => {
-  const [collapsed, setCollapsed] = React.useState(false);
+  const [collapsed, setCollapsed] = React.useState(true);
   return (
-    <Sider className='site-layout-background' width={200}>
+    <Sider className='site-layout-background' width={200} collapsed={collapsed} trigger={null} collapsible>
       <Button type='primary' onClick={() => setCollapsed(!collapsed)} style={{ marginBottom: 16 }}>
         {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
       </Button>
-      <Menu defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} mode='inline' theme='dark' inlineCollapsed={collapsed}>
+      <Menu defaultSelectedKeys={['1']} theme='dark'>
         <Menu.Item key='1' icon={<PieChartOutlined />}>
           Option 1
         </Menu.Item>
